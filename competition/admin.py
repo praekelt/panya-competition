@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from competition.admin import ModelBaseAdmin
+from content.admin import ModelBaseAdmin
 from competition.models import Competition, CompetitionOption, CompetitionEntry
 
 
