@@ -52,9 +52,11 @@ class Competition(ModelBase):
         now = datetime.now()
         active = True
         
-        if self.start_date:
+        if self.start_date and self.end_date:
+            active = self.end_date >= self.start_date
+        if self.start_date and active:
             actice = self.start_date <= now
-        if self.end_date:
+        if self.end_date and active:
             active = self.end_date >= now
             
         return active
