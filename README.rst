@@ -7,6 +7,8 @@ Dependancies:
 =============
 django-content
     git@github.com:praekelt/django-content.git
+django-ckeditor
+    #TODO: add git url
 
 
 Models:
