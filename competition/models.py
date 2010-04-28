@@ -1,13 +1,13 @@
 from datetime import datetime
 
-from django import models
+from django.db import models
 from django.contrib.auth.models import User
 
-from content.models import BaseModel
+from content.models import ModelBase
 
 
 class Competition(ModelBase):
-    content = RichTextField()
+    #content = RichTextField()
     start_date = models.DateField(
         blank=True, 
         null=True, 
@@ -24,22 +24,26 @@ class Competition(ModelBase):
         max_length=255,
         help_text='Short competition question',
     )
+    '''
     question_blurb = RichTextField(
         blank=True, 
         null=True, 
         help_text='Descriptive text elaborating on the question.'
     )
+    '''
     correct_answer = models.CharField(
         max_length=255,
         blank=True, 
         null=True, 
         help_text='Answer used to determine winning entries.'
     )
+    '''
     rules = RichTextField(
         blank=True, 
         null=True, 
         help_text='Rules specific to this competition.',
     )
+    '''
     
     def is_active(self):
         '''
