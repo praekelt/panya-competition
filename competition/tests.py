@@ -51,3 +51,6 @@ class ModelTestCase(unittest.TestCase):
         competition_obj.save()
         self.failIf(competition_obj.is_active())
         
+        # test that the competition entry has answered the question correctly
+        self.failIf(competition_entry_obj.correct_answer())
+        
