@@ -64,20 +64,6 @@ class Competition(ModelBase):
     def __unicode__(self):
         return self.title
     
-class CompetitionOption(models.Model):
-    competition = models.ForeignKey(
-        Competition,
-        related_name='competion_options'
-    )
-    title = models.CharField(max_length=255)
-
-    class Meta:
-        verbose_name = 'Competition Option'
-        verbose_name_plural = 'Competition Options'
-    
-    def __unicode__(self):
-        return self.title
-    
 class CompetitionEntry(models.Model):
     competition = models.ForeignKey(
         Competition,
