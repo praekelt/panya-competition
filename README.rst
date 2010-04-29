@@ -51,33 +51,6 @@ MANAGERS
 ********
 None
 
-CompetitionOption:
-------------------
-class models.CompetitionOption
-    
-Competition question answer options. List of possible answers to the question posed by the competition object.
-Linked to a competition via foreign key.
-
-API Reference:
-~~~~~~~~~~~~~~
-
-FIELDS
-******
-competition
-    Foreign key to the competition object.
-title
-    The title/answer option to the competition question
-extends django-content fields
-    See django-content README
-
-METHODS
-*******
-None
-
-MANAGERS
-********
-None
-
 CompetitionEntry:
 -----------------
 class models.CompetitionEntry
