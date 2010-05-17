@@ -3,11 +3,11 @@ from datetime import datetime
 from django.db import models
 from django.contrib.auth.models import User
 
+from ckeditor.fields import RichTextField
 from content.models import ModelBase
 
-
 class Competition(ModelBase):
-    #content = RichTextField()
+    content = RichTextField()
     start_date = models.DateField(
         blank=True, 
         null=True, 
