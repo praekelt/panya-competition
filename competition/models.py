@@ -24,26 +24,22 @@ class Competition(ModelBase):
         max_length=255,
         help_text='Short competition question',
     )
-    '''
     question_blurb = RichTextField(
         blank=True, 
         null=True, 
         help_text='Descriptive text elaborating on the question.'
     )
-    '''
     correct_answer = models.CharField(
         max_length=255,
         blank=True, 
         null=True, 
         help_text='Answer used to determine winning entries.'
     )
-    '''
     rules = RichTextField(
         blank=True, 
         null=True, 
         help_text='Rules specific to this competition.',
     )
-    '''
     
     def is_active(self):
         '''
