@@ -1,7 +1,8 @@
 from datetime import datetime
 
-from django.db import models
 from django.contrib.auth.models import User
+from django.core.urlresolvers import reverse
+from django.db import models
 
 from ckeditor.fields import RichTextField
 from content.models import ModelBase
@@ -41,21 +42,8 @@ class Competition(ModelBase):
         help_text='Rules specific to this competition.',
     )
     
-    def is_active(self):
-        '''
-        Assert that the listing in active according to start/end dates.
-        '''
-        now = datetime.now()
-        active = True
-        
-        if self.start_date and self.end_date:
-            active = self.end_date >= self.start_date
-        if self.start_date and active:
-            actice = self.start_date <= now
-        if self.end_date and active:
-            active = self.end_date >= now
-            
-        return active
+    def get_absolute_url(self):
+        return reverse('competition_object_detail', kwargs={'slug': self.slug})
     
     def __unicode__(self):
         return self.title
