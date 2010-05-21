@@ -1,0 +1,24 @@
+<div class="post rich">
+	<img src="{{ object.get_competition_detail_url }}" width="269" height="151" alt="" />
+	<p>{{ object.content|safe }}</p>
+</div>
+
+{% if object.question %}
+<div class="inner rich">
+	<h3>{{ object.question }}</h3>
+	<p>{{ object.question_blurb|safe }}</p>
+	{% comment %}
+	<form id="frmEnterCompetition" action="#" method="post">
+		<p><input type="text" name="competition_answer" value="" class="shift" /></p>
+		<p><input type="submit" name="submit" value="" class="btn" /></p>
+	</form>
+	{% endcomment %}
+</div>
+{% endif %}
+
+{% if object.rules %}
+<div class="inner rich">
+	<h3>Competition Rules</h3>
+	<p>{{ object.rules|safe }}</p>
+</div>
+{% endif %}
