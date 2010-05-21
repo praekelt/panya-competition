@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load content_inclusion_tags competition_inclusion_tags pagemenu_inclusion_tags %} 
+
+{% block content %}
+    <div class="page section_competitions">
+	    <div class="title">
+		    <h1>{{ title }}</h1>
+		</div>
+
+        {% pagemenu pagemenu %}
+        
+        <div class="post no_bord rich">
+            <p>{{ object_list.0.rules|safe }}</p>
+        </div>
+
+	</div>
+{% endblock %}
