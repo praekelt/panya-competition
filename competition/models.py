@@ -76,8 +76,8 @@ class CompetitionEntry(models.Model):
     timestamp = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        verbose_name = 'Competition Entry'
-        verbose_name_plural = 'Competition Entries'
+        verbose_name = 'Competition entry'
+        verbose_name_plural = 'Competition entries'
         
     def correct_answer(self):
         if self.answer and self.competition.correct_answer:
