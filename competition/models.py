@@ -6,6 +6,7 @@ from django.db import models
 
 from ckeditor.fields import RichTextField
 from content.models import ModelBase
+from options.models import Options
 
 class Competition(ModelBase):
     content = RichTextField()
@@ -74,3 +75,16 @@ class CompetitionEntry(models.Model):
 
     def __unicode__(self):
         return "%s answered %s" % (self.user.username, self.answer)
+        
+class CompetitionOptions(Options):
+    __module__ = 'options.models'
+    
+    rules = RichTextField(
+        blank=True, 
+        null=True, 
+        help_text='General rules which apply to all competitions.'
+    )
+    
+    class Meta:
+        verbose_name = 'Competition options'
+        verbose_name_plural = 'Competition options'
