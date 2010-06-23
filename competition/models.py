@@ -5,8 +5,8 @@ from django.core.urlresolvers import reverse
 from django.db import models
 
 from ckeditor.fields import RichTextField
-from content.models import ModelBase
-from options.models import Options
+from panya.models import ModelBase
+from preferences.models import Preferences
 
 class Competition(ModelBase):
     content = RichTextField()
@@ -76,8 +76,8 @@ class CompetitionEntry(models.Model):
     def __unicode__(self):
         return "%s answered %s" % (self.user.username, self.answer)
         
-class CompetitionOptions(Options):
-    __module__ = 'options.models'
+class CompetitionPreferences(Preferences):
+    __module__ = 'preferences.models'
     
     rules = RichTextField(
         blank=True, 
@@ -86,5 +86,5 @@ class CompetitionOptions(Options):
     )
     
     class Meta:
-        verbose_name = 'Competition options'
-        verbose_name_plural = 'Competition options'
+        verbose_name = 'Competition preferences'
+        verbose_name_plural = 'Competition preferences'

@@ -1,5 +1,5 @@
-from content.generic.views import GenericObjectList, GenericObjectDetail
-from competition.models import Competition, CompetitionOptions
+from panya.generic.views import GenericObjectList, GenericObjectDetail
+from competition.models import Competition, CompetitionPreferences
 from competition.pagemenus import CompetitionPageMenu
 
 class ObjectList(GenericObjectList):
@@ -69,7 +69,7 @@ class OptionDetail(GenericObjectList):
         return 1
     
     def get_queryset(self):
-        return CompetitionOptions.objects.all()
+        return CompetitionPreferences.objects.all()
 
     def get_template_name(self):
         return 'competition/competitionoptions_list.html'

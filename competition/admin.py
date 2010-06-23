@@ -1,9 +1,8 @@
 from django.contrib import admin
 
-from content.admin import ModelBaseAdmin
-from competition.models import Competition, CompetitionEntry, CompetitionOptions
+from panya.admin import ModelBaseAdmin
+from competition.models import Competition, CompetitionEntry, CompetitionPreferences
 
-    
 admin.site.register(Competition, ModelBaseAdmin)
 admin.site.register(CompetitionEntry)
-admin.site.register(CompetitionOptions)
+admin.site.register(CompetitionPreferences)
