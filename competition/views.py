@@ -1,77 +1,50 @@
-from panya.generic.views import GenericObjectList, GenericObjectDetail
 from competition.models import Competition, CompetitionPreferences
-from competition.pagemenus import CompetitionPageMenu
+from competition.view_modifiers import CompetitionViewModifier
+from panya.generic.views import GenericObjectList, GenericObjectDetail
+from preferences import preferences
 
 class ObjectList(GenericObjectList):
     def get_extra_context(self, *args, **kwargs):
-        extra_context = super(ObjectList, self).get_extra_context(*args, **kwargs)
-        added_context = {'title': 'Competitions'}
-        if extra_context:
-            extra_context.update(
-                added_context,
-            )
-        else:
-            extra_context = added_context
-
-        return extra_context
+        return {'title': 'Competitions'}
+   
+    def get_view_modifier(self, request, *args, **kwargs):
+        return CompetitionViewModifier(request=request, slug=None)
     
-    def get_pagemenu(self, request, queryset, *args, **kwargs):
-        return CompetitionPageMenu(queryset=queryset, request=request, slug=None)
-
-    def get_paginate_by(self):
+    def get_paginate_by(self, *args, **kwargs):
         return 7
     
-    def get_queryset(self):
+    def get_queryset(self, *args, **kwargs):
         return Competition.permitted.all().order_by('start_date')
 
 object_list = ObjectList()
 
 class ObjectDetail(GenericObjectDetail):
-    def get_extra_context(self, slug, *args, **kwargs):
-        extra_context = super(ObjectDetail, self).get_extra_context(*args, **kwargs)
-        added_context = {
-            'title': 'Competitions',
-        }
-        if extra_context:
-            extra_context.update(
-                added_context,
-            )
-        else:
-            extra_context = added_context
-
-        return extra_context
+    def get_extra_context(self, *args, **kwargs):
+        return {'title': 'Competitions'}
     
-    def get_pagemenu(self, request, queryset, slug, *args, **kwargs):
-        return CompetitionPageMenu(queryset=queryset, request=request, slug=slug)
-
-    def get_queryset(self, slug):
+    def get_view_modifier(self, request, *args, **kwargs):
+        return CompetitionViewModifier(request=request, slug=None)
+    
+    def get_queryset(self, *args, **kwargs):
         return Competition.permitted.all()
         
 object_detail = ObjectDetail()
 
-class OptionDetail(GenericObjectList):
+class PreferencesDetail(GenericObjectDetail):
     def get_extra_context(self, *args, **kwargs):
-        extra_context = super(OptionDetail, self).get_extra_context(*args, **kwargs)
-        added_context = {'title': 'Competitions'}
-        if extra_context:
-            extra_context.update(
-                added_context,
-            )
-        else:
-            extra_context = added_context
-
-        return extra_context
+        return {'title': 'Competitions'}
     
-    def get_pagemenu(self, request, queryset, *args, **kwargs):
-        return CompetitionPageMenu(queryset=queryset, request=request, slug=None)
-
-    def get_paginate_by(self):
-        return 1
+    def get_view_modifier(self, request, *args, **kwargs):
+        return CompetitionViewModifier(request=request, slug=None)
     
-    def get_queryset(self):
+    def get_queryset(self, *args, **kwargs):
         return CompetitionPreferences.objects.all()
 
-    def get_template_name(self):
-        return 'competition/competitionoptions_list.html'
+    def get_template_name(self, *args, **kwargs):
+        return 'competition/competitionpreferences_detail.html'
+    
+    def __call__(self, request, *args, **kwargs):
+        self.params['object_id'] = preferences.CompetitionPreferences.id
+        return super(PreferencesDetail, self).__call__(request, *args, **kwargs)
         
-option_detail = OptionDetail()
+preferences_detail = PreferencesDetail()
