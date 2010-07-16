@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='panya-competition',
-    version='0.0.1',
+    version='0.0.2',
     description='Panya competition app.',
     long_description = open('README.rst', 'r').read(),
     author='Praekelt International',
@@ -26,5 +26,6 @@ setup(
         "Intended Audience :: Developers",
         "Topic :: Internet :: WWW/HTTP :: Dynamic Content",
     ],
+    zip_safe=False,
 )
 
