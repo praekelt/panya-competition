@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='panya-competition',
-    version='0.0.2',
+    version='0.0.3',
     description='Panya competition app.',
     long_description = open('README.rst', 'r').read(),
     author='Praekelt International',
