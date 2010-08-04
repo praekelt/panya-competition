@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='panya-competition',
-    version='0.0.3',
+    version='0.0.4',
     description='Panya competition app.',
     long_description = open('README.rst', 'r').read(),
     author='Praekelt International',
@@ -10,9 +10,6 @@ setup(
     license='BSD',
     url='http://github.com/praekelt/panya-competition',
     packages = find_packages(),
-    dependency_links = [
-        'https://github.com/praekelt/panya/tarball/master#egg=panya',
-    ],
     install_requires = [
         'panya',
     ],
